@@ -1,0 +1,41 @@
+<div class="flex justify-between items-center">
+  <div class="mb-6 space-x-2">
+    <button
+      [class.hidden]="mode === 'preview'"
+      (click)="createPriceParameter()"
+      class="bg-green-400 cursor-pointer hover:bg-green-500 text-white font-bold py-2 px-4 rounded mt-4 text-xs"
+    >
+      Create price parameter
+      <nz-spin
+        *ngIf="loading$ | async"
+        class="absolute top-[50vh] left-[50vw]"
+        nzSize="large"
+      ></nz-spin>
+    </button>
+    <button
+      (click)="updateVersion()"
+      [class.hidden]="mode === 'create' || mode === 'preview'"
+      class="bg-red-400 cursor-pointer hover:bg-red-500 text-white font-bold py-2 px-4 rounded mt-4 text-xs"
+    >
+      Update existing version
+    </button>
+    <button
+      (click)="onCancel()"
+      class="bg-slate-50 cursor-pointer hover:bg-slate-100 font-bold py-2 px-4 rounded border mt-4 text-xs"
+    >
+      Cancel
+    </button>
+  </div>
+  <button
+    [class.hidden]="mode === 'create' || mode === 'preview'"
+    class="bg-slate-50 cursor-pointer hover:bg-slate-100 font-bold py-2 px-4 rounded border text-xs"
+  >
+    Import
+  </button>
+  <div [class.hidden]="mode === 'create' || mode === 'preview'">
+    <span class="mr-1">Version</span>
+    <select class="py-1 border rounded">
+      <option *ngFor="let version of versions$ | async">{{ version }}</option>
+    </select>
+  </div>
+</div>

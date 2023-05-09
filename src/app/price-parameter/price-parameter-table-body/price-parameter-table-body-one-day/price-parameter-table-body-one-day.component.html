@@ -1,0 +1,20 @@
+<tbody>
+  <tr *ngFor="let date of dates">
+    <th
+      (click)="enableEdit[date] = !enableEdit[date]"
+      class="cursor-pointer text-xs w-24 font-semibold text-left relative top-0 flex flex-col items-start"
+    >
+      <span>{{ date }}</span>
+    </th>
+    <td>
+      <input
+        [disabled]="!enableEdit[date]"
+        [id]="getDateKey(date)"
+        [value]="(inputValues$ | async)![getDateKey(date)] || ''"
+        (input)="onInputChange(getDateKey(date), $event)"
+        class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-1 px-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        placeholder="0"
+      />
+    </td>
+  </tr>
+</tbody>

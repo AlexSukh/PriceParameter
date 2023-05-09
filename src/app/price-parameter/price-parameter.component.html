@@ -1,0 +1,11 @@
+<app-price-parameter-table-title></app-price-parameter-table-title>
+<section
+  class="bg-white mt-6 pt-2 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 shadow-lg h-auto pb-1"
+>
+  <app-price-parameter-table-inputs></app-price-parameter-table-inputs>
+  <app-price-parameter-table-body
+    [hours]="(hours$ | async)!"
+  ></app-price-parameter-table-body>
+  <app-price-parameter-table-filter></app-price-parameter-table-filter>
+  <app-price-parameter-table-actions></app-price-parameter-table-actions>
+</section>

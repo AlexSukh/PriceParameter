@@ -1,0 +1,45 @@
+<div
+  [formGroup]="form"
+  ngxsForm="priceParameterCreate.filterForm"
+  class="flex bg-slate-100 p-3 items-center justify-between gap-3"
+>
+  <div class="flex-1 items-center space-x-2">
+    <span class="mr-1">Display period</span>
+    <nz-date-picker
+      formControlName="periodFrom"
+      [nzPlaceHolder]="'Period from'"
+    ></nz-date-picker>
+    <span>-</span>
+    <nz-date-picker
+      formControlName="periodTo"
+      [nzPlaceHolder]="'Period to'"
+    ></nz-date-picker>
+  </div>
+  <div class="flex-2 flex space-x-12">
+    <div>
+      <span class="mr-4">Number of page views</span>
+      <select
+        formControlName="pageViewsNumber"
+        class="py-1 border border-sky-600 rounded"
+      >
+        <option>25</option>
+        <option>50</option>
+        <option>100</option>
+      </select>
+    </div>
+    <div>
+      <span class="mr-4">Go to page</span>
+      <input
+        formControlName="goToPage"
+        type="number"
+        class="py-1 px-1 leading-tight border border-sky-600 w-10 rounded"
+      />
+    </div>
+    <app-pagination
+      (pageChange)="getCurrentPageSlice($event); currentPage = $event"
+      [currentPage]="currentPage"
+      [totalPages]="totalPages"
+      [maxPagesToShow]="3"
+    ></app-pagination>
+  </div>
+</div>

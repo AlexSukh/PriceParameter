@@ -1,0 +1,40 @@
+<div class="flex items-center justify-center space-x-2">
+  <button
+    class="px-2 py-1 rounded-md border border-gray-300 hover:bg-gray-100 focus:outline-none"
+    [disabled]="currentPage === 1"
+    (click)="changePage(1)"
+  >
+    <span nz-icon nzType="double-left" nzTheme="outline"></span>
+  </button>
+  <button
+    class="px-2 py-1 rounded-md border border-gray-300 hover:bg-gray-100 focus:outline-none"
+    [disabled]="currentPage === 1"
+    (click)="changePage(currentPage - 1)"
+  >
+    <span nz-icon nzType="left" nzTheme="outline"></span>
+  </button>
+  <ng-container *ngFor="let page of pages">
+    <button
+      class="px-2 py-1 rounded-md border border-gray-300 hover:bg-gray-100 focus:outline-none"
+      [class.bg-blue-500]="page === currentPage"
+      [class.text-white]="page === currentPage"
+      (click)="changePage(page)"
+    >
+      {{ page }}
+    </button>
+  </ng-container>
+  <button
+    class="px-2 py-1 rounded-md border border-gray-300 hover:bg-gray-100 focus:outline-none"
+    [disabled]="currentPage === totalPages"
+    (click)="changePage(currentPage + 1)"
+  >
+    <span nz-icon nzType="right" nzTheme="outline"></span>
+  </button>
+  <button
+    class="px-2 py-1 rounded-md border border-gray-300 hover:bg-gray-100 focus:outline-none"
+    [disabled]="currentPage === totalPages"
+    (click)="changePage(totalPages)"
+  >
+    <span nz-icon nzType="double-right" nzTheme="outline"></span>
+  </button>
+</div>

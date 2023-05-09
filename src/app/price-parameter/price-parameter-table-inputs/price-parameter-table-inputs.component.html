@@ -1,0 +1,83 @@
+<div
+  [formGroup]="form"
+  ngxsForm="priceParameterCreate.inputForm"
+  class="flex flex-wrap -mx-2"
+>
+  <div class="w-full md:w-1/3 px-2">
+    <label
+      class="text-slate-500 block tracking-wide text-xs font-bold mb-2"
+      for="input-1"
+    >
+      Name
+    </label>
+    <input
+      formControlName="name"
+      [ngClass]="{
+          'pointer-events-none bg-slate-100':  (mode$ | async) === 'preview',
+          'border-red-500': isFieldInvalid('name'),
+          'border-yellow-500': !isFieldInvalid('name'),
+
+        }"
+      class="appearance-none block w-full border py-1 px-2 mb-3 leading-tight focus:outline-none focus:bg-white"
+      id="input-1"
+      type="text"
+      placeholder="Price parameter name"
+    />
+  </div>
+  <div class="w-full md:w-1/3 px-2">
+    <label
+      class="text-slate-500 block tracking-wide text-xs font-bold mb-2"
+      for="input-2"
+    >
+      Set value type
+    </label>
+    <div class="relative">
+      <select
+        formControlName="periodType"
+        (click)="displayWarning($event)"
+        [ngClass]="{
+          'pointer-events-none bg-slate-100':
+            (mode$ | async) === 'edit' || (mode$ | async) === 'preview'
+        }"
+        class="appearance-none block w-full text-gray-700 border border-yellow-500 rounded py-1 px-2 mb-3 leading-tight focus:outline-none focus:bg-white"
+        id="input-2"
+        name="input-2"
+      >
+        <option *ngFor="let option of valueTypeOptions" [value]="option.key">
+          {{ option.label }}
+        </option>
+      </select>
+      <div
+        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+      >
+        <svg class="fill-current h-4 w-4" viewBox="0 0 20 20">
+          <path d="M10 12l-6-6h12z" />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div
+    *ngIf="['FIFTEEN_MINUTES', 'ONE_HOUR'].includes((valueType$ | async)!)"
+    class="w-full md:w-1/3 px-2"
+  >
+    <label class="text-slate-500 block tracking-wide text-xs font-bold mb-2">
+      Set time zone
+    </label>
+    <div class="flex">
+      <label
+        *ngFor="let timeZone of timeZones"
+        class="inline-flex items-center mr-4"
+      >
+        <input
+          (click)="displayWarning($event)"
+          formControlName="timeZone"
+          type="radio"
+          class="form-radio"
+          name="timeZone"
+          [value]="timeZone"
+        />
+        <span class="ml-2">{{ timeZone }}</span>
+      </label>
+    </div>
+  </div>
+</div>

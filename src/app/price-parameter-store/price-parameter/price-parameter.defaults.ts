@@ -1,0 +1,51 @@
+import { PriceParameterStateModel } from './price-parameter.model';
+export const priceParameterDefaults: PriceParameterStateModel = {
+  creating: false,
+  inputForm: {
+    model: {
+      name: '',
+      periodType: 'FIFTEEN_MINUTES',
+      timeZone: 'EET',
+    },
+    dirty: false,
+    status: '',
+    errors: {},
+  },
+  timeZones: ['EET', 'CET'],
+  currentPriceParameterName: '',
+  currentPriceParameterVersion: 1,
+  availableVersions: [],
+  currentPriceParameterId: null,
+  currentTypeSaved: false,
+  mode: 'create',
+  dates: [],
+  inputValues: {},
+  currentDateSlice: [],
+  hours: Array.from({ length: 24 }, (_, i) => i + 1),
+  months: [],
+  createPriceParameter: {
+    name: '',
+    periodType: 'FIFTEEN_MINUTES',
+    timeZone: 'EET',
+    priceParameterDetails: [],
+  },
+  editPriceParameter: {},
+  periodRange: {
+    periodFrom: '',
+    periodTo: '',
+  },
+  priceParameterPreview: {},
+  currentPageNumber: 1,
+  goToPageNumber: 1,
+  filterForm: {
+    model: {
+      periodFrom: '',
+      periodTo: '',
+      pageViewsNumber: 50,
+      goToPage: 1,
+    },
+    dirty: false,
+    status: '',
+    errors: {},
+  },
+};

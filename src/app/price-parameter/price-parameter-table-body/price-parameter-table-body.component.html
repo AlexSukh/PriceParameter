@@ -1,0 +1,27 @@
+<table
+  class="block h-96 overflow-scroll table-auto bg-slate-100 border border-slate-100 border-8"
+>
+  <app-price-parameter-table-body-fifteen-minutes
+    [dates]="dates"
+    [hours]="hours"
+    *ngIf="(valueType$ | async) === 'FIFTEEN_MINUTES'"
+  >
+  </app-price-parameter-table-body-fifteen-minutes>
+  <app-price-parameter-table-body-one-hour
+    [dates]="dates"
+    [hours]="hours"
+    *ngIf="(valueType$ | async) === 'ONE_HOUR'"
+  >
+  </app-price-parameter-table-body-one-hour>
+  <app-price-parameter-table-body-one-day
+    [dates]="dates"
+    [hours]="hours"
+    *ngIf="(valueType$ | async) === 'ONE_DAY'"
+  >
+  </app-price-parameter-table-body-one-day>
+  <app-price-parameter-table-body-one-month
+    [hours]="hours"
+    *ngIf="(valueType$ | async) === 'ONE_MONTH'"
+  >
+  </app-price-parameter-table-body-one-month>
+</table>
